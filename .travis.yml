@@ -14,4 +14,4 @@ install:
   - "pip install -r dev-requirements.txt"
 
 script:
-  - "nosetests tests∕*"
+  - "nosetests tests/test_lists.py"
