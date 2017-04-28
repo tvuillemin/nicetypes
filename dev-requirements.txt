@@ -1,8 +1,6 @@
 check-manifest
 coverage
-ipython
 nose
-pytest
 setuptools
 twine
 wheel
