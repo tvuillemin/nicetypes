@@ -1,5 +1,6 @@
 check-manifest
 coverage
+pylint
 pytest
 setuptools
 twine
