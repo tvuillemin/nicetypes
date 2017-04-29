@@ -2,6 +2,7 @@ check-manifest
 coverage
 pylint
 pytest
+pytest-cov
 setuptools
 twine
 wheel
