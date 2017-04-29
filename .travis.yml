@@ -16,3 +16,6 @@ install:
 script:
   - "pylint --rcfile=.pylintrc src/nicetypes"
   - "py.test --verbose --cov=src --cov-fail-under=100"
+
+notifications:
+  email: false
