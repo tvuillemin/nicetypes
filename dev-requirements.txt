@@ -1,0 +1,6 @@
+check-manifest
+coverage
+nose
+setuptools
+twine
+wheel
