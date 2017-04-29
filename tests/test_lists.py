@@ -1,8 +1,8 @@
-from nose.tools import assert_list_equal
+from unittest import TestCase
 
 from nicetypes.lists import UniqList
 
-class TestUniqList:
+class TestUniqList(TestCase):
 
     def test_uniqlist_init(self):
         # Given
@@ -12,7 +12,7 @@ class TestUniqList:
         unq = UniqList(data)
 
         # Then
-        assert_list_equal(unq, [1, 2, 3, 4])
+        self.assertListEqual(unq, [1, 2, 3, 4])
 
     def test_uniqlist_append(self):
         # Given
@@ -23,7 +23,7 @@ class TestUniqList:
         unq.append(5)
 
         # Then
-        assert_list_equal(unq, [1, 2, 3, 4, 5])
+        self.assertListEqual(unq, [1, 2, 3, 4, 5])
 
     def test_uniqlist_insert_replace_false(self):
         # Given
@@ -34,7 +34,7 @@ class TestUniqList:
         unq.insert(0, 0)
 
         # Then
-        assert_list_equal(unq, [0, 1, 2, 3, 4])
+        self.assertListEqual(unq, [0, 1, 2, 3, 4])
 
     def test_uniqlist_insert_replace_true(self):
         # Given
@@ -45,7 +45,7 @@ class TestUniqList:
         unq.insert(0, 0, replace=True)
 
         # Then
-        assert_list_equal(unq, [0, 3, 1, 2, 4])
+        self.assertListEqual(unq, [0, 3, 1, 2, 4])
 
     def test_uniqlist_extend(self):
         # Given
@@ -55,7 +55,7 @@ class TestUniqList:
         unq.extend([4, 5, 6])
 
         # Then
-        assert_list_equal(unq, [1, 2, 3, 4, 5, 6])
+        self.assertListEqual(unq, [1, 2, 3, 4, 5, 6])
 
     def test_uniqlist_add_uniqlist(self):
         # Given
@@ -66,7 +66,7 @@ class TestUniqList:
         concat = unq1 + unq2
 
         # Then
-        assert_list_equal(concat, [1, 2, 3, 4, 5, 6])
+        self.assertListEqual(concat, [1, 2, 3, 4, 5, 6])
 
     def test_uniqlist_add_list(self):
         # Given
@@ -76,4 +76,4 @@ class TestUniqList:
         concat = unq + [4, 5, 5, 5, 6]
 
         # Then
-        assert_list_equal(concat, [1, 2, 3, 4, 5, 6])
+        self.assertListEqual(concat, [1, 2, 3, 4, 5, 6])

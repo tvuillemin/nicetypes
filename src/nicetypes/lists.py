@@ -3,7 +3,7 @@ class UniqList(list):
 
     When you try to add an element that is already present, UniqList ignores it silently.
     You can view it as a kind of "ordered set", which removes doubles but preserves order.
-    An already present element will generally be prefered over a new one, unless specified otherwise.
+    An already present element will be prefered over a new one, unless specified otherwise.
     """
 
     def __init__(self, ordered_iterable):
