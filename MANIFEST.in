@@ -1,3 +1,4 @@
+include .pylintrc
 include *.in
 include *.md
 include *.txt
