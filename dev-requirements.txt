@@ -1,6 +1,8 @@
 check-manifest
 coverage
-nose
+pylint
+pytest
+pytest-cov
 setuptools
 twine
 wheel
