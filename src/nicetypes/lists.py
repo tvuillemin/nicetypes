@@ -6,7 +6,13 @@ class UniqList(list):
     An already present element will be prefered over a new one, unless specified otherwise.
     """
 
-    def __init__(self, ordered_iterable):
+    def __init__(self, ordered_iterable=()):
+        """Constructor
+
+        _elements_set is a internal set that contains every element in the UniqList.
+        This set is used for search operations, because those operations are much
+        faster on a set than on a list (complexity O(1) vs O(n)).
+        """
         list.__init__(self)
         self._elements_set = set()
         for element in ordered_iterable:

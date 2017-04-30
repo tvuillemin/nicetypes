@@ -4,9 +4,36 @@ from nicetypes.lists import UniqList
 
 class TestUniqList(TestCase):
 
-    def test_uniqlist_init(self):
+    def test_uniqlist_init_without_arg(self):
+        # When
+        unq = UniqList()
+
+        # Then
+        self.assertListEqual(unq, [])
+
+    def test_uniqlist_init_with_tuple(self):
         # Given
-        data = [1, 2, 3, 3, 4]
+        data = (1, 2, 3, 3, 4, 1)
+
+        # When
+        unq = UniqList(data)
+
+        # Then
+        self.assertListEqual(unq, [1, 2, 3, 4])
+
+    def test_uniqlist_init_with_list(self):
+        # Given
+        data = [1, 2, 3, 3, 4, 1]
+
+        # When
+        unq = UniqList(data)
+
+        # Then
+        self.assertListEqual(unq, [1, 2, 3, 4])
+
+    def test_uniqlist_init_with_generator(self):
+        # Given
+        data = (i for i in range(1, 5))
 
         # When
         unq = UniqList(data)
@@ -68,12 +95,32 @@ class TestUniqList(TestCase):
         # Then
         self.assertListEqual(concat, [1, 2, 3, 4, 5, 6])
 
+    def test_uniqlist_add_tuple(self):
+        # Given
+        unq = UniqList([1, 2, 3, 4])
+
+        # When
+        concat = unq + (4, 5, 5, 5, 6)
+
+        # Then
+        self.assertListEqual(concat, [1, 2, 3, 4, 5, 6])
+
     def test_uniqlist_add_list(self):
         # Given
         unq = UniqList([1, 2, 3, 4])
 
         # When
         concat = unq + [4, 5, 5, 5, 6]
+
+        # Then
+        self.assertListEqual(concat, [1, 2, 3, 4, 5, 6])
+
+    def test_uniqlist_add_generator(self):
+        # Given
+        unq = UniqList([1, 2, 3, 4])
+
+        # When
+        concat = unq + (i for i in range(4, 7))
 
         # Then
         self.assertListEqual(concat, [1, 2, 3, 4, 5, 6])
