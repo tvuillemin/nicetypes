@@ -1,4 +1,8 @@
 # pylint: disable=redefined-builtin
+# pylint: disable=wildcard-import
+from .lists import *
+from .dicts import *
+
 __version__ = "0.2.1"
 
 __title__ = "nicetypes"
