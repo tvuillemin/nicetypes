@@ -6,7 +6,7 @@ class UniqList(list):
     An already present element will be prefered over a new one, unless specified otherwise.
     """
 
-    def __init__(self, ordered_iterable):
+    def __init__(self, ordered_iterable=()):
         list.__init__(self)
         self._elements_set = set()
         for element in ordered_iterable:
