@@ -21,6 +21,14 @@ class TestImmutableDict(TestCase):
         # Then
         self.assertEqual(value, 1)
 
+    def test_immutabledict_str(self):
+        # Given
+        imd = ImmutableDict({"foo": 1})
+        # When
+        imd_str = str(imd)
+        # Then
+        self.assertEqual(imd_str, "ImmutableDict({'foo': 1})")
+
     def test_immutabledict_len(self):
         # Given
         imd = ImmutableDict({"foo": 1, "bar": 2})

@@ -13,6 +13,9 @@ class ImmutableDict:
     def __len__(self):
         return len(self._inner_dict)
 
+    def __str__(self):
+        return "%s(%s)" % (self.__class__.__name__, str(self._inner_dict))
+
     def get(self, key):
         return self._inner_dict.get(key)
 
