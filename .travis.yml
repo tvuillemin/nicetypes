@@ -16,5 +16,15 @@ script:
   - "pylint --rcfile=.pylintrc src/nicetypes"
   - "py.test --verbose --cov=src --cov-fail-under=100"
 
+deploy:
+  provider: pypi
+  user: tvuillemin
+  password:
+    secure: uU3wivNY5XNgqNWSsxZZf3WGkc3wBXjiPydv41k3pyKE7HKSeET6Bk97ktRa8IQ0zTSztFXfuoOgcMFnHbtYV4dkmb/HODwUahRh3TLrzdVUCt/wAxYbs4seLcIKhJ15i0TqA90b/0pyuNA5BzsGt+dyOwkK8oMidPiNboz56M3u5Tv/TuFimDGjf0xUkcZvrFXUGt8PBntbZCZMZyHkFjX4yFdIDVL3TFh3+Zugk7G70l3oeR2GH1pbS7ffl/040BUThbkw1qMcu2K9aAKQTSyC1x5D9eO4UuXu5JWZkVARG1J8OIRjajDt3VhjDWJmt689zitsKwMk3u3DZoVSkpBLyx81KVPTa7x7+reZEr0U1jvypp6hP7sijlDhMexWeIczg/lqgQ1iUI85XfrQs1oQbtS3zq+abXBUYzUj3WFkyfOn+cz5botK1dagImStazzwrsujPTdvNoqq8k+gaNZq9ZWBnoib1aTZzE8rh3uNa+ENktsGvXLpj3ZSW0fkenoLoHREqOA+UKbRILG0CyNMtQ5DoKM92wt0w8DPcUBU6iuAss10uSwypGvzwgWyAVNfpUUWPCulurGCuvWjTFHhVvuCD+aqmEgKRb9kxUxk/HgV89uNlmqyV0rAUFISzenc/pTDeBZDHh30qDlfvjXtjXrNrwvmd2UXuf2vv5c=
+  distributions: "sdist bdist_wheel"
+  on:
+    tags: true
+
+
 notifications:
   email: false
