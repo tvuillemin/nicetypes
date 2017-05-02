@@ -1,4 +1,4 @@
-class UniqList(list):
+class UniqList:
     """A list-like object that makes sure there is no double in the list.
 
     When you try to add an element that is already present, UniqList ignores it silently.
@@ -13,23 +13,32 @@ class UniqList(list):
         This set is used for search operations, because those operations are much
         faster on a set than on a list (complexity O(1) vs O(n)).
         """
-        list.__init__(self)
+        self._elements_list = list()
         self._elements_set = set()
         for element in ordered_iterable:
             self.append(element)
 
+    def __getitem__(self, index):
+        return self._elements_list[index]
+
+    def __iter__(self):
+        return iter(self._elements_list)
+
+    def __str__(self):
+        return "UniqList(%s)" % str(self._elements_list)
+
     def append(self, element):
         if element not in self._elements_set:
-            list.append(self, element)
+            self._elements_list.append(element)
             self._elements_set.add(element)
 
     def insert(self, index, element, replace=False):
         if element not in self._elements_set:
-            list.insert(self, index, element)
+            self._elements_list.insert(index, element)
             self._elements_set.add(element)
         elif replace:
-            self.remove(element)
-            list.insert(self, index, element)
+            self._elements_list.remove(element)
+            self._elements_list.insert(index, element)
         else:  # element already exists but replace is False
             pass
 
