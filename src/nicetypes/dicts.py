@@ -7,9 +7,6 @@ class ImmutableDict:
         self._hash = None
         self._inner_dict = deepcopy(dictionnary)
 
-    def __iter__(self):
-        return iter(self._inner_dict)
-
     def __getitem__(self, key):
         return self._inner_dict[key]
 
