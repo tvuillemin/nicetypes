@@ -1,20 +1,29 @@
 language: python
 
 python:
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "3.7-dev" # 3.7 development branch
+    - '3.4'
+    - '3.5'
+    - '3.6'
+    - '3.7-dev'
 
 env:
-  - PYTHONPATH=src
+    - PYTHONPATH=src
 
 install:
-  - "pip install -r dev-requirements.txt"
+    - pip install -r dev-requirements.txt
 
 script:
-  - "pylint --rcfile=.pylintrc src/nicetypes"
-  - "py.test --verbose --cov=src --cov-fail-under=100"
+    - pylint --rcfile=.pylintrc src/nicetypes
+    - py.test --verbose --cov=src --cov-fail-under=100
+
+deploy:
+    provider: pypi
+    user: tvuillemin
+    password:
+        secure: NRNE+mAUh6X6pcIqsEFe6wnjalmyApQkA6YqIMIanoBkXp3xVvngAVibUIQc8HL46IlVr8XkaKLigwT8SlModuE8eqUC5DzbB/oAZ3z9MlA/ZsZGqoq09LCMMWI1yqem4t4vb7TmeEoVMtW17T9ktK3v3LEwJxFMRBxUyq/Cy4uC94B+ixS0ELudCvBhr2+WLq3kBawvTwDU175Umad3zW3tRAWkURnBbWsTxTcTDnlLfxoeVeNjXCdROXw4Csh/0nM9EII5lScD4AOEH20F9QFVd4MiS091cf1tmhKGVn7e6lsHGytRd+5SEAzC4Yr3fYPEd7EcZtf2P/G6CEORr3OlZ6SZnSqjbp2o2eOjSZ5ZZNXKlTkR33xUbF/sAS480oqX7fXNQWtmEilewxgfBLiYdEm653orlK+RJRWumijPjrSmO4m/hgF5+sp6Qso1n9iTf4WtPHjcjxrlnhKWDFrPl9Y4u767HBkV7oezfvnHRDri/gmSPWDdDCalEqmfrJVkjFvslUfaWWwF9t0Hz2wKU/MtQnJS0x0zizzreoWj/RGP5E2GxYoXEEd7wrYAVc8s7WYMD6WkekxV6vDP0UJWQcZnSdCXqZEI+aIamftH0bl8fOykgfzxzdQQth0qTHcoBSW3ax1FwzOTmDWK0tRBsWTlE3momt9o4mI7gR8=
+    distributions: sdist bdist_wheel
+    on:
+        tags: true
 
 notifications:
-  email: false
+    email: false

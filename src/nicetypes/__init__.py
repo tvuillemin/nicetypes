@@ -1,5 +1,9 @@
 # pylint: disable=redefined-builtin
-__version__ = "0.2.1"
+# pylint: disable=wildcard-import
+from .lists import *
+from .dicts import *
+
+__version__ = "0.3.0"
 
 __title__ = "nicetypes"
 __description__ = "Advanced types for Python3"

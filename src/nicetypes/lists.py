@@ -25,7 +25,7 @@ class UniqList:
         return iter(self._elements_list)
 
     def __str__(self):
-        return "UniqList(%s)" % str(self._elements_list)
+        return "%s(%s)" % (self.__class__.__name__, str(self._elements_list))
 
     def append(self, element):
         if element not in self._elements_set:
