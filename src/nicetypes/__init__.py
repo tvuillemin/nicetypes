@@ -1,5 +1,5 @@
 # pylint: disable=redefined-builtin
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 __title__ = "nicetypes"
 __description__ = "Advanced types for Python3"
