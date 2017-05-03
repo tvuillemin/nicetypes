@@ -3,7 +3,7 @@
 from .lists import *
 from .dicts import *
 
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 
 __title__ = "nicetypes"
 __description__ = "Advanced types for Python3"
