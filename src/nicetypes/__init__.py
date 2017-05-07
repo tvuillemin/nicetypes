@@ -3,10 +3,10 @@
 from .lists import *
 from .dicts import *
 
-__version__ = "0.3.1"
+__version__ = "0.3.2"
 
 __title__ = "nicetypes"
-__description__ = "Advanced types for Python3"
+__description__ = "Advanced types: UniqList and ImmutableDict"
 __uri__ = "https://github.com/tvuillemin/nicetypes"
 __doc__ = __description__ + " <" + __uri__ + ">"
 
