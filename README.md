@@ -6,49 +6,40 @@ Advanced types for Python3: ImmutableDict and UniqList.
 
 ### ImmutableDict
 
-#### Code
+#### Usage
 
 ```python
 from nicetypes import ImmutableDict
 frozen_dict = ImmutableDict({"foo": 1, "bar": 2})
 print(frozen_dict)
+# ImmutableDict({'foo': 1, 'bar': 2})
 frozen_dict["foo"] = 3
-```
-
-#### Output
-
-```
-ImmutableDict({'foo': 1, 'bar': 2})
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: 'ImmutableDict' object does not support item assignment
 ```
 
+
 ### UniqList
 
-#### Code
+#### Usage
 
 ```python
 from nicetypes import UniqList
 unql = UniqList([1, 2, 2, 2, 3, 2])
 print(unql)
+# UniqList([1, 2, 3])
 unql.append(4)
 unql.append(4)
 print(unql)
-```
-
-#### Output
-
-```
-UniqList([1, 2, 3])
-UniqList([1, 2, 3, 4])
+# UniqList([1, 2, 3, 4])
 ```
 
 ## Usinge nicetypes
 
 ### Prerequisites
 
-This module is developped on a Fedora 25 machine with Python 3.5.3, but it should theoritically run on **any system with a Python3 interpreter**. Don't hesitate to report any issues if it doesn't work on your platform. However, this module is not intented to work on Python2.
+This module is developped on a Fedora 25 machine with Python 3.5.3, but it should theoretically run on **any system with a Python3 interpreter**. Don't hesitate to report any issues if it doesn't work on your platform. However, this module is not intented to work on Python2.
 
 ### Installation
 
@@ -109,9 +100,9 @@ py.test --verbose --cov=src --cov-fail-under=100
 ### Continuous integration
 
 This module use a [Travis pipeline](https://travis-ci.org/tvuillemin/nicetypes) for continuous integration. It performs the following actions when a Git branch is pushed on Github:
-1. checking the style guide,
-2. running the unit tests and checking the coverage,
-3. in case of tagged release, deploy on PyPI.
+1. check the style guide,
+2. run the unit tests and checking the coverage,
+3. in case of tagged release, deploy to PyPI.
 
 ## Authors
 
