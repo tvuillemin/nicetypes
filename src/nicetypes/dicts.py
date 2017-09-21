@@ -1,10 +1,15 @@
 from copy import deepcopy
 
 
-class ImmutableDict:
+def validate_dict(dictionnary):
+    if not isinstance(dictionnary, dict):
+        raise TypeError("Expected a dict as argument, got a %s instead." % type(dictionnary))
+
+
+class _DictWrapper:
 
     def __init__(self, dictionnary):
-        self._hash = None
+        validate_dict(dictionnary)
         self._inner_dict = deepcopy(dictionnary)
 
     def __getitem__(self, key):
@@ -28,9 +33,40 @@ class ImmutableDict:
     def values(self):
         return self._inner_dict.values()
 
+
+class ImmutableDict(_DictWrapper):
+
+    def __init__(self, dictionnary):
+        super().__init__(dictionnary)
+        self._hash = None
+
     def __hash__(self):
         if self._hash is None:
             self._hash = hash(tuple(sorted(self._inner_dict.items())))
         return self._hash
 
+
 FrozenDict = ImmutableDict
+
+
+class TypedDict(_DictWrapper):
+
+    def __init__(self, key_type=None, value_type=None, copy_from=None):
+        dictionnary = copy_from if copy_from else {}
+        super().__init__(dictionnary)
+        self._key_type = key_type
+        self._value_type = value_type
+
+    def __setitem__(self, key, value):
+        self.validate_key(key)
+        self.validate_value(value)
+
+    def validate_key(self, key):
+        if self._key_type and not isinstance(key, self._key_type):
+            raise TypeError("Expected a %s as key, got a %s instead." %
+                            (type(key), type(self._key_type)))
+
+    def validate_value(self, value):
+        if self._value_type and not isinstance(value, self._value_type):
+            raise TypeError("Expected a %s as value, got a %s instead." %
+                            (type(value), type(self._value_type)))
