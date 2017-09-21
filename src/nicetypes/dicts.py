@@ -60,13 +60,14 @@ class TypedDict(_DictWrapper):
     def __setitem__(self, key, value):
         self.validate_key(key)
         self.validate_value(value)
+        self._inner_dict[key] = value
 
     def validate_key(self, key):
         if self._key_type and not isinstance(key, self._key_type):
             raise TypeError("Expected a %s as key, got a %s instead." %
-                            (type(key), type(self._key_type)))
+                            (self._key_type, type(key)))
 
     def validate_value(self, value):
         if self._value_type and not isinstance(value, self._value_type):
             raise TypeError("Expected a %s as value, got a %s instead." %
-                            (type(value), type(self._value_type)))
+                            (self._value_type, type(value)))
