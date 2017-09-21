@@ -3,7 +3,7 @@
 from .lists import *
 from .dicts import *
 
-__version__ = "0.3.2"
+__version__ = "0.4.0"
 
 __title__ = "nicetypes"
 __description__ = "Advanced types: UniqList and ImmutableDict"
