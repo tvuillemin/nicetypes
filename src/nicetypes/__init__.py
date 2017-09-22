@@ -1,7 +1,8 @@
 # pylint: disable=redefined-builtin
 # pylint: disable=wildcard-import
-from .lists import *
 from .dicts import *
+from .lists import *
+from .trees import *
 
 __version__ = "0.4.0"
 
